@@ -61,8 +61,15 @@ page{
   import Card from '../components/card';
   
   export default class Index extends wepy.page {
+    onShareAppMessage() {
+    
+      return {
+        title: '旺材有点料',
+        path: '/pages/index'
+      }
+    }
     config = {
-      navigationBarTitleText: '有料点'
+      navigationBarTitleText: '旺材有点料'
     }
     components = {
           // 声明页面中要使用到的List组件的ID为List

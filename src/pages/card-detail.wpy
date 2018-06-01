@@ -24,7 +24,7 @@
 <template>
     <Loading wx:if="{{loading==true}}" :pageType=""/>
     <scroll-view class="article-detail" >
-       <image  src="{{detail.coverurl}}" style="width:100%;"/>
+       <image  src="{{detail.coverurl}}" wx:if="{{detail.coverurl!=''}}" style="width:100%;"/>
         <text class="title" >{{detail.title}}</text>
         <text class="author">{{detail.author_name}}</text>
         <view class="content">
@@ -38,8 +38,15 @@ import WxParse from '../wxParse/wxParse'
 import htmlParser from '../components/htmlParser'
 import Loading from '../components/loading'
 export default class CardDetail extends wepy.page {
+    onShareAppMessage() {
+        
+      return {
+        title: '旺材有点料',
+        path: '/pages/card-detail?id='+this.detail.id
+      }
+    }
     config = {
-      navigationBarTitleText: '有料点'
+      navigationBarTitleText: '旺材有点料'
     }
     props = {
         id: Number,
